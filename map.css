@@ -1,0 +1,66 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.legend {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    max-width: 22%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.map-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.map-icon {
+    display: none;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: opacity 0.3s ease-in-out;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.iron {
+    background-image: url('images/iron.png');
+}
+
+.clay {
+    background-image: url('images/clay.png');
+}
+
+.grass {
+    background-image: url('images/grass.png');
+}
+
+.bamboo {
+    background-image: url('images/bamboo.png');
+}
+
+.chrysanthemums {
+    background-image: url('images/chrysanthemums.png');
+}
+
+.legend button {
+    width: 100%;
+    text-align: left;
+    padding: 5px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.legend button:hover {
+    background-color: #f0f0f0;
+}
