@@ -1,19 +1,39 @@
+// map.js
 const map = document.getElementById('map');
 const legendIcons = document.querySelectorAll('.legend button');
 const iconPositions = [
-    [{ x: 880, y: 377 }, { x: 300, y: 100 }], // Koordinaten für "iron.png"
-    [{ x: 343, y: 330 }, { x: 355, y: 310 }], // Koordinaten für "clay.png"
-    [{ x: 470, y: 383 }, { x: 470, y: 390 }, { x: 480, y: 383 }, { x: 480, y: 390 }, { x: 615, y: 305 }, { x: 615, y: 315 }, { x: 625, y: 305 }, { x: 625, y: 315 }], // Koordinaten für "grass.png"
+    [{ x: 0.2, y: 0.377 }, { x: 0.08, y: 0.1 }], // Koordinaten für "iron.png" (relativ zur Karte)
+    [{ x: 0.3, y: 0.4 }] // Koordinaten für "clay.png" (relativ zur Karte)
     // Weitere Koordinaten für andere Bilder können hier hinzugefügt werden
 ];
 
 let visibleIcons = [];
 
-legendIcons.forEach((legendIcon, index) => {
-    legendIcon.addEventListener('click', () => {
-        toggleIcon(index);
-    });
-});
+function updateIconPositions() {
+    const mapWidth = map.clientWidth;
+    const mapHeight = map.clientHeight;
+    const mapImage = map.querySelector('img');
+
+    if (mapImage.complete) { // Überprüfung, ob das Bild geladen ist
+        const imageWidth = mapImage.naturalWidth;
+        const imageHeight = mapImage.naturalHeight;
+
+        legendIcons.forEach((legendIcon, index) => {
+            legendIcon.addEventListener('click', () => {
+                toggleIcon(index);
+            });
+
+            const iconList = getIconElementList(index);
+            iconList.forEach((icon, positionIndex) => {
+                const position = iconPositions[index][positionIndex];
+                const iconX = (position.x * imageWidth) - (icon.clientWidth / 2);
+                const iconY = (position.y * imageHeight) - (icon.clientHeight / 2);
+                icon.style.left = `${iconX}px`;
+                icon.style.top = `${iconY}px`;
+            });
+        });
+    }
+}
 
 function toggleIcon(index) {
     if (visibleIcons.includes(index)) {
@@ -25,10 +45,7 @@ function toggleIcon(index) {
 
 function showIcon(index) {
     const iconList = getIconElementList(index);
-    iconList.forEach((icon, positionIndex) => {
-        const position = iconPositions[index][positionIndex];
-        icon.style.left = `${position.x}px`;
-        icon.style.top = `${position.y}px`;
+    iconList.forEach((icon) => {
         icon.style.display = 'block';
     });
     visibleIcons.push(index);
@@ -50,3 +67,11 @@ function getIconElementList(index) {
         return document.getElementById(`icon${index + 1}_${positionIndex}`);
     });
 }
+
+window.addEventListener('load', () => {
+    updateIconPositions();
+});
+
+window.addEventListener('resize', () => {
+    updateIconPositions();
+});
