@@ -1,25 +1,35 @@
 body {
     margin: 0;
     padding: 0;
+    overflow: hidden;
+    display: flex;
+    min-height: 100vh;
 }
 
 .legend {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    max-width: 22%;
+    flex: 0 0 30%;
+    max-width: 30%;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    box-sizing: border-box;
+    overflow-y: auto;
+	background-color: #1A1B1F;
 }
 
 .map-container {
+    flex: 1;
     position: relative;
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
+    overflow: hidden;
+	background-color: #1f1f1f;	
 }
 
+#map {
+    width: 100%;
+    height: auto; /* Bildhöhe passt sich proportional zur Breite an */
+}
 .map-icon {
     display: none;
     position: absolute;
@@ -52,15 +62,19 @@ body {
 }
 
 .legend button {
-    width: 100%;
-    text-align: left;
-    padding: 5px;
+    width: 150px; /* Breite auf 150px festlegen */
+    height: 35px; /* Höhe auf 35px festlegen */
+    background-color: #1A1B1F;
+    color: white;
     border: none;
-    background-color: transparent;
     cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
+	 border: 2px solid #78818a;
+    transition: background-color 0.3s ease;
+	text-align: left; /* Text linksbündig ausrichten */
+    padding: 10px; /* Padding hinzufügen */
+    margin-left: 30px; /* Verschiebung um 30px nach rechts */
 }
 
 .legend button:hover {
-    background-color: #f0f0f0;
+    background-color: #0f0f0f;
 }
