@@ -4,7 +4,10 @@ body {
     overflow: hidden;
     display: flex;
     min-height: 100vh;
+	background-color: #1A1B1F;
+	font-family: Roboto,sans-serif;
 }
+
 
 .legend {
     flex: 0 0 30%;
@@ -17,18 +20,22 @@ body {
     box-sizing: border-box;
     overflow-y: auto;
 	background-color: #1A1B1F;
+	margin-top:100px;
 }
 
 .map-container {
     flex: 1;
     position: relative;
     overflow: hidden;
-	background-color: #1f1f1f;	
+    background-color: #1f1f1f;
+    display: flex; /* Hinzugefügt */
+    justify-content: center; /* Hinzugefügt */
+    align-items: center; /* Hinzugefügt */
 }
 
 #map {
-    width: 100%;
-    height: auto; /* Bildhöhe passt sich proportional zur Breite an */
+    max-width: auto; /* Geändert von width: 100% */
+    max-height: 100%; /* Hinzugefügt */
 }
 .map-icon {
     display: none;
@@ -42,39 +49,60 @@ body {
 }
 
 .iron {
-    background-image: url('images/iron.png');
+    background-image: url('images/trans_iron.png');
 }
 
 .clay {
-    background-image: url('images/clay.png');
+    background-image: url('images/trans_clay.png');
 }
 
 .grass {
-    background-image: url('images/grass.png');
+    background-image: url('images/trans_grass.png');
 }
 
 .bamboo {
-    background-image: url('images/bamboo.png');
+    background-image: url('images/trans_bamboo.png');
 }
 
 .chrysanthemums {
-    background-image: url('images/chrysanthemums.png');
+    background-image: url('images/trans_chrysanthemums.png');
 }
 
 .legend button {
-    width: 150px; /* Breite auf 150px festlegen */
-    height: 35px; /* Höhe auf 35px festlegen */
-    background-color: #1A1B1F;
+    width: 200px; /* Breite auf 150px festlegen */
+    height: 45px; /* Höhe auf 35px festlegen */
+    background-color: #26272D;
     color: white;
     border: none;
     cursor: pointer;
-	 border: 2px solid #78818a;
+	border: 2px solid #78818a;
     transition: background-color 0.3s ease;
 	text-align: left; /* Text linksbündig ausrichten */
     padding: 10px; /* Padding hinzufügen */
     margin-left: 30px; /* Verschiebung um 30px nach rechts */
+	    display: flex; /* Hinzugefügt */
+    align-items: center; /* Hinzugefügt */
+}
+
+.button-content {
+    display: flex;
+    align-items: center;
+}
+
+.button-content img {
+    margin-right: 10px; /* Abstand zwischen Bild und Text */
 }
 
 .legend button:hover {
     background-color: #0f0f0f;
 }
+
+.legend-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 30px;
+    margin-bottom: 10px; /* Abstand unterhalb des Titels */
+	color: white;
+}
+
+
